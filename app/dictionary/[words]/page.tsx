@@ -4,6 +4,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 
+
 const getDictData = async (words: string) => {
   const ApiData = await axios.get(
     `https://cambridge-dictionary-api.vercel.app/api/dictionary/english/${words}`,
