@@ -4,16 +4,18 @@ import axios from 'axios';
 import Link from 'next/link';
 import React from 'react';
 
-
-const getDictData = async (words: string) => {
-  const ApiData = await axios.get(
-    `https://cambridge-dictionary-api.vercel.app/api/dictionary/english/${words}`,
-  );
-
-  return ApiData.data;
+type paramsType = {
+  params: {
+    words: string;
+  };
 };
 
-const Dictionary = async ({ params }: { params: { words: string } }) => {
+const getDictData = async (words: string) => {
+  const url = await axios.get(`${process.env.NEXT_PUBLIC_API}/${words}`);
+  return url.data;
+};
+
+const Dictionary = async ({ params }: paramsType) => {
   const words = params.words;
   const data = await getDictData(words);
   console.log(data);
