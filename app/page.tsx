@@ -4,19 +4,18 @@ import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
 export default function Home() {
   return (
-    <div className='flex h-dvh flex-col items-center justify-center gap-5'>
-      <div className='flex flex-col gap-2 text-center'>
-        <h1 className='text-3xl font-extrabold'>
+    <div className='flex h-full flex-col items-center justify-center gap-5'>
+      <div className='flex w-full flex-col items-center justify-center gap-2 text-center'>
+        <h1 className='text-4xl font-bold md:text-6xl'>
           Literally Just An English Dictionary
         </h1>
-        <p className='text-muted-foreground'>
+        <p className='max-w-96 text-balance text-sm text-muted-foreground md:max-w-[55rem] md:text-wrap md:text-center md:text-xl'>
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illo eius
           aliquam numquam! Similique velit praesentium laboriosam repudiandae
           maxime quia possimus molestias inventore repellendus harum.
-          Repellendus itaque veritatis a natus nostrum!
         </p>
       </div>
-      <div className='flex gap-8'>
+      <div className='flex w-full justify-center gap-8'>
         <Link href={'/'} className={`${buttonVariants()} bg-gray-950`}>
           Get Started
         </Link>
