@@ -16,7 +16,10 @@ export default function Home() {
         </p>
       </div>
       <div className='flex w-full justify-center gap-8'>
-        <Link href={'/'} className={`${buttonVariants()} bg-gray-950`}>
+        <Link
+          href={'/dictionary/hello'}
+          className={`${buttonVariants()} bg-black`}
+        >
           Get Started
         </Link>
         <Link

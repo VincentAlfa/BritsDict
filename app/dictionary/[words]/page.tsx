@@ -11,9 +11,15 @@ type paramsType = {
 };
 
 const getDictData = async (words: string) => {
-  const url = await axios.get(`${process.env.NEXT_PUBLIC_API}/${words}`);
+  const url = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/${words}`);
   return url.data;
 };
+
+export async function generateMetadata({ params }: paramsType) {
+  return {
+    title: `${params.words.toUpperCase()} | British English Dictionary - BritsDict`,
+  };
+}
 
 const Dictionary = async ({ params }: paramsType) => {
   const words = params.words;
@@ -21,7 +27,7 @@ const Dictionary = async ({ params }: paramsType) => {
   console.log(data);
 
   return (
-    <div className='flex flex-col items-center justify-center h-screen gap-5'>
+    <div className='flex h-screen flex-col items-center justify-center gap-5'>
       <h1>{data.word}</h1>
       <h1>{data.pronunciation[1].pron}</h1>
       <audio controls>
@@ -29,7 +35,7 @@ const Dictionary = async ({ params }: paramsType) => {
       </audio>
       <GenerateRandom />
       <Link href={'/'}>
-        <Button>Home</Button>
+        <Button className='bg-black'>Home</Button>
       </Link>
     </div>
   );
