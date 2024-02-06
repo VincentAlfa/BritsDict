@@ -12,7 +12,9 @@ const GenerateRandom = () => {
 
   return (
     <div>
-      <Button onClick={handleClick}>Generate Random Words</Button>
+      <Button className='bg-black' onClick={handleClick}>
+        Generate Random Words
+      </Button>
     </div>
   );
 };
