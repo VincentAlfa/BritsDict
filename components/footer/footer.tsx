@@ -4,10 +4,11 @@ import React from 'react';
 const Footer = () => {
   return (
     <footer>
-      <div className='fixed bottom-0 flex w-full items-center justify-center space-x-2 border bg-slate-100 p-4 shadow-xl'>
-        <h1 className='flex items-center justify-center space-x-6'>
-          BritsDict
-          <Copyright width={15} height={15} />.
+      <div className='fixed bottom-0 flex w-full items-center justify-center space-x-1 border-t-2 border-gray-200 p-4 shadow-xl'>
+        <h1 className='flex items-center justify-center space-x-1'>
+          <span>BritsDict</span>
+          <Copyright width={16} height={16} />
+          <span>2023.</span>
         </h1>
         <h1>All rights reserved</h1>
       </div>
