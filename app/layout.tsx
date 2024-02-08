@@ -3,6 +3,7 @@ import { GeistSans } from 'geist/font/sans';
 import './globals.css';
 import Footer from '@/components/footer/footer';
 import Container from '@/components/container/container';
+import Navbar from '@/components/navbar/navbar';
 
 export const metadata: Metadata = {
   title: 'BritsDict',
@@ -17,6 +18,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={GeistSans.className}>
+        <Navbar />
         <Container>{children}</Container>
         <Footer />
       </body>
