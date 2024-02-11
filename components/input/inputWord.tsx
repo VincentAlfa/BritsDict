@@ -10,13 +10,27 @@ const InputWord = () => {
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/dictionary/${inputRef.current?.value}`);
+    const input = inputRef.current?.value;
+    router.push(`/dictionary/${input?.toLowerCase}`);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleClick();
+    }
   };
 
   return (
     <div className='flex items-center justify-center gap-5'>
-      <Input className='w-64 h-8' ref={inputRef} placeholder='Search...'/>
-      <Button onClick={handleClick}>Search</Button>
+      <Input
+        onKeyDown={handleKeyDown}
+        className='h-8 w-64'
+        ref={inputRef}
+        placeholder='Search...'
+      />
+      <Button className='h-8' type='submit' onClick={handleClick}>
+        Search
+      </Button>
     </div>
   );
 };

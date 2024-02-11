@@ -1,4 +1,4 @@
-import { buttonVariants } from '@/components/ui/button';
+import { Button, buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
 
@@ -16,11 +16,8 @@ export default function Home() {
         </p>
       </div>
       <div className='flex w-full justify-center gap-8'>
-        <Link
-          href={'/dictionary/hello'}
-          className={`${buttonVariants()} bg-black`}
-        >
-          Get Started
+        <Link href={'/dictionary/hello'}>
+          <Button className='bg-black'>Random Words</Button>
         </Link>
         <Link
           href={'https://github.com/VincentAlfa/BritsDict'}
