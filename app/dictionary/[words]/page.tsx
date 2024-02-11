@@ -45,7 +45,7 @@ const Dictionary = async ({ params }: paramsType) => {
 
   return (
     <div className='flex h-full flex-col items-center justify-center'>
-      <Card className='h-[500px] min-w-[350px]'>
+      <Card className='h-[500px] w-[350px] mb-5 md:mb-0'>
         <CardHeader>
           <CardTitle className='text-3xl'>{data.word}</CardTitle>
           <CardDescription>
