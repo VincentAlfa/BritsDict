@@ -1,7 +1,20 @@
-import GenerateRandom from '@/components/generateRandom/generateRandom';
-import { Button } from '@/components/ui/button';
+import PlayButton from '@/components/playButton/playButton';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+} from '@/components/ui/accordion';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
+import WordExamples from '@/components/wordExamples/wordExamples';
+import removeDuplicate from '@/lib/removeDuplicate';
+import { AccordionTrigger } from '@radix-ui/react-accordion';
 import axios from 'axios';
-import Link from 'next/link';
 import React from 'react';
 
 type paramsType = {
@@ -24,19 +37,37 @@ export async function generateMetadata({ params }: paramsType) {
 const Dictionary = async ({ params }: paramsType) => {
   const words = params.words;
   const data = await getDictData(words);
-  console.log(data);
+
+  const partOfSpeech = removeDuplicate(data.pos);
+  const pronunciation = data.pronunciation[1];
+  const definition = data.definition.filter((_: unknown, i: number) => i < 3);
+  console.log(definition);
 
   return (
-    <div className='flex h-screen flex-col items-center justify-center gap-5'>
-      <h1>{data.word}</h1>
-      <h1>{data.pronunciation[1].pron}</h1>
-      <audio controls>
-        <source src={data.pronunciation[1].url} type='audio/mpeg' />
-      </audio>
-      <GenerateRandom />
-      <Link href={'/'}>
-        <Button className='bg-black'>Home</Button>
-      </Link>
+    <div className='flex h-full flex-col items-center justify-center'>
+      <Card className='h-[500px] min-w-[350px]'>
+        <CardHeader>
+          <CardTitle className='text-3xl'>{data.word}</CardTitle>
+          <CardDescription>
+            {partOfSpeech.map((pos: string, index) => {
+              return (
+                <span
+                  key={pos}
+                >{`${pos}${index === partOfSpeech.length - 1 ? '' : ','} `}</span>
+              );
+            })}
+          </CardDescription>
+        </CardHeader>
+        <CardContent className='flex flex-col'>
+          <div className='flex gap-2'>
+            <h1>{pronunciation.lang.toUpperCase()}</h1>
+            <PlayButton audioSource={pronunciation.url} />
+            <h1 className='pl-4'>{pronunciation.pron}</h1>
+          </div>
+          <h1 className='pt-5'>Examples</h1>
+          <WordExamples datas={definition} />
+        </CardContent>
+      </Card>
     </div>
   );
 };

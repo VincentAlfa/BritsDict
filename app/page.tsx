@@ -1,6 +1,10 @@
 import { Button, buttonVariants } from '@/components/ui/button';
 import Link from 'next/link';
 import { GitHubLogoIcon } from '@radix-ui/react-icons';
+import { generate } from 'random-words';
+
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
 
 export default function Home() {
   return (
@@ -16,7 +20,7 @@ export default function Home() {
         </p>
       </div>
       <div className='flex w-full justify-center gap-8'>
-        <Link href={'/dictionary/hello'}>
+        <Link href={`/dictionary/${generate()}`}>
           <Button className='bg-black'>Random Words</Button>
         </Link>
         <Link
