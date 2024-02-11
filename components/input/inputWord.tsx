@@ -28,7 +28,11 @@ const InputWord = () => {
         ref={inputRef}
         placeholder='Search...'
       />
-      <Button className='h-8' type='submit' onClick={handleClick}>
+      <Button
+        className='hidden h-8 md:block '
+        type='submit'
+        onClick={handleClick}
+      >
         Search
       </Button>
     </div>
