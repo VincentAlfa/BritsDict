@@ -11,7 +11,7 @@ const InputWord = () => {
 
   const handleClick = () => {
     const input = inputRef.current?.value;
-    router.push(`/dictionary/${input?.toLowerCase}`);
+    router.push(`/dictionary/${input?.toLowerCase()}`);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
